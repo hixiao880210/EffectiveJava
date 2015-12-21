@@ -1,6 +1,7 @@
 package com.effective.concurrent;
 
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -10,7 +11,7 @@ import java.util.logging.Logger;
 public class ProducerAndConsumer {
 
     public static void main(String args[]) {
-        Vector sharedQueue = new Vector();
+        List sharedQueue = new ArrayList();
         int size = 4;
         Thread prodThread = new Thread(new Producer(sharedQueue, size), "生产者");
         Thread consThread = new Thread(new Consumer(sharedQueue, size), "消费者");
@@ -21,10 +22,10 @@ public class ProducerAndConsumer {
 
 class Producer implements Runnable {
 
-    private final Vector sharedQueue;
+    private final List sharedQueue;
     private final int SIZE;
 
-    public Producer(Vector sharedQueue, int size) {
+    public Producer(List sharedQueue, int size) {
         this.sharedQueue = sharedQueue;
         this.SIZE = size;
     }
@@ -66,9 +67,9 @@ class Producer implements Runnable {
 
 class Consumer implements Runnable {
 
-    private final Vector sharedQueue;
+    private final List sharedQueue;
 
-    public Consumer(Vector sharedQueue, int size) {
+    public Consumer(List sharedQueue, int size) {
         this.sharedQueue = sharedQueue;
     }
 
